@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-9800403554639579",
+        enable_page_level_ads: true
+    });
+  </script>
+  
+  <title>简单源码安装Nginx | 影子迷鱼博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="昨天，已经通过yum的方式来成功安装Nginx，由于yum这种方式只是适合红帽系，因此，我们可以通过使用源码安装的方式，来在不同的发行版本上成功安装Nginx，当然，例如ubuntu等也可以通过apt-get这种方式安装。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单源码安装Nginx">
+<meta property="og:url" content="http://blog.em248.com/2017/06/13/简单源码安装Nginx/index.html">
+<meta property="og:site_name" content="影子迷鱼博客">
+<meta property="og:description" content="昨天，已经通过yum的方式来成功安装Nginx，由于yum这种方式只是适合红帽系，因此，我们可以通过使用源码安装的方式，来在不同的发行版本上成功安装Nginx，当然，例如ubuntu等也可以通过apt-get这种方式安装。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-28T09:05:34.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单源码安装Nginx">
+<meta name="twitter:description" content="昨天，已经通过yum的方式来成功安装Nginx，由于yum这种方式只是适合红帽系，因此，我们可以通过使用源码安装的方式，来在不同的发行版本上成功安装Nginx，当然，例如ubuntu等也可以通过apt-get这种方式安装。">
+  
+    <link rel="alternate" href="/atom.xml" title="影子迷鱼博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.em248.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">影子迷鱼博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-简单源码安装Nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/13/简单源码安装Nginx/" class="article-date">
+  <time datetime="2017-06-13T20:46:25.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      简单源码安装Nginx
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>昨天，已经通过yum的方式来成功安装Nginx，由于yum这种方式只是适合红帽系，因此，我们可以通过使用源码安装的方式，来在不同的发行版本上成功安装Nginx，当然，例如ubuntu等也可以通过apt-get这种方式安装。<br><a id="more"></a></p>
+<h2 id="一-准备环境"><a href="#一-准备环境" class="headerlink" title="一.准备环境"></a>一.准备环境</h2><p>根据官网的说明，我们在编译前，需要配置一些列的编译环境，具体如下：</p>
+<ul>
+<li>pcre</li>
+<li>zlib</li>
+<li>openssl</li>
+</ul>
+<p>我们在这里以centos为例来安装这些依赖，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">yum install -y pcre pcre-devel  </span><br><span class="line">yum install -y zlib zlib-devel  </span><br><span class="line">yum install -y openssl openssl-devel  </span><br><span class="line">yum install -y gcc cmake</span><br></pre></td></tr></table></figure>
+<p>随后，我们下载当前nginx的稳定版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.12.0.tar.gz</span><br></pre></td></tr></table></figure>
+<p>解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xf nginx-1.12.0.tar.gz</span><br></pre></td></tr></table></figure>
+<p>完成以上步骤，我们的编译环境和源码包基本就绪，后面可以开始编译。</p>
+<h2 id="二-编译Nginx"><a href="#二-编译Nginx" class="headerlink" title="二.编译Nginx"></a>二.编译Nginx</h2><p>编译Nginx和编译Hadoop等是差不多的，都是执行相同的命令，如下:</p>
+<h3 id="第一步-配置configure"><a href="#第一步-配置configure" class="headerlink" title="第一步.配置configure"></a>第一步.配置configure</h3><p>我们在编译的适合，需要配置configure来生成编译所需的<code>Makefile</code> 文件，如下(在nginx源码目录下操作):</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">--sbin-path=/usr/local/nginx/nginx</span><br><span class="line">--conf-path=/usr/local/nginx/nginx.conf</span><br><span class="line">--pid-path=/usr/local/nginx/nginx.pid</span><br></pre></td></tr></table></figure>
+<p>当然，这里也可以配置更多的参数，参数说明可以参考帮助</p>
+<ul>
+<li>–sbin-path：指定了nginx运行文件所在位置</li>
+<li>–conf-path：指定了nginx配置文件所在位置</li>
+<li>–pid-path：指定了运行时产生的pid文件所在位置</li>
+</ul>
+<h3 id="第二步-make-amp-make-install"><a href="#第二步-make-amp-make-install" class="headerlink" title="第二步.make&amp;make install"></a>第二步.make&amp;make install</h3><p>当生成了<code>Makefile</code> ，我们就可以执行以下命令，来编译nginx(基于前一步，在nginx源码目录下操作)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> make</span><br><span class="line"><span class="meta">$</span> make install</span><br></pre></td></tr></table></figure>
+<p>当执行完这两步以后，nginx就成功安装好了，我们可以进入到<code>/usr/local/nginx</code>目录下，执行<code>./nginx</code>，nginx就可以运行了，我们也可以通过访问localhost来查看nginx的欢迎界面，来确认是否运行成功</p>
+<h2 id="三-配置开机自动启动-非必需"><a href="#三-配置开机自动启动-非必需" class="headerlink" title="三.配置开机自动启动(非必需)"></a>三.配置开机自动启动(非必需)</h2><p>自己手动编译的一个问题就是，nginx并不会成为系统的一个服务，来开机自动启动，因此，我们需要把nginx添加到服务中，来让其在系统启动后就自动启动。</p>
+<p>首先，我们新建并编辑<code>/etc/init.d/nginx</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
+<p>随后，我们在新建的文件中，输入以下内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"><span class="meta">#</span> chkconfig: 2345 85 15</span><br><span class="line"><span class="meta">#</span> Startup script for the nginx Web Server</span><br><span class="line"><span class="meta">#</span> description: nginx is a World Wide Web server. </span><br><span class="line"><span class="meta">#</span> It is used to serve HTML files and CGI.</span><br><span class="line"><span class="meta">#</span> processname: nginx</span><br><span class="line"><span class="meta">#</span> pidfile: /usr/local/nginx/nginx.pid</span><br><span class="line"><span class="meta">#</span> config: /usr/local/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">DESC="nginx deamon"</span><br><span class="line">NAME=nginx</span><br><span class="line">DAEMON=/usr/local/nginx/$NAME</span><br><span class="line">SCRIPTNAME=/etc/init.d/$NAME</span><br><span class="line">PID_PATH=/usr/local/nginx/nginx.pid</span><br><span class="line"></span><br><span class="line">test -x $DAEMON || exit 0</span><br><span class="line"></span><br><span class="line">d_start()&#123;</span><br><span class="line"><span class="meta">  $</span>DAEMON || echo -n "already running"</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">d_stop()&#123;</span><br><span class="line"><span class="meta">  $</span>DAEMON -s quit || echo -n "not running"</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d_reload()&#123;</span><br><span class="line"><span class="meta">  $</span>DAEMON -s reload || echo -n "can not reload"</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">d_status()&#123;</span><br><span class="line">	if [ -e $PID_PATH ];then</span><br><span class="line">		echo "service is running"</span><br><span class="line">	else</span><br><span class="line">		echo "service not running"</span><br><span class="line">	fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case "$1" in</span><br><span class="line">start)</span><br><span class="line">  echo -n "Starting $DESC: $NAME"</span><br><span class="line">  d_start</span><br><span class="line">  echo "."</span><br><span class="line">;;</span><br><span class="line">stop)</span><br><span class="line">  echo -n "Stopping $DESC: $NAME"</span><br><span class="line">  d_stop</span><br><span class="line">  echo "."</span><br><span class="line">;;</span><br><span class="line">reload)</span><br><span class="line">  echo -n "Reloading $DESC conf..."</span><br><span class="line">  d_reload</span><br><span class="line">  echo "reload ."</span><br><span class="line">;;</span><br><span class="line">restart)</span><br><span class="line">  echo -n "Restarting $DESC: $NAME"</span><br><span class="line">  d_stop</span><br><span class="line">  sleep 2</span><br><span class="line">  d_start</span><br><span class="line">  echo "."</span><br><span class="line">;;</span><br><span class="line">status)</span><br><span class="line">  d_status</span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">  echo "Usage: $ScRIPTNAME &#123;start|stop|reload|restart|status&#125;" &gt;&amp;2</span><br><span class="line">  exit 3</span><br><span class="line">;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
+<p>随后，wq保存，为这个nginx文件添加执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x nginx</span><br></pre></td></tr></table></figure>
+<p>随后，添加到计划中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add nginx</span><br></pre></td></tr></table></figure>
+<p>设置在指定范围内，都开机启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig nginx on</span><br></pre></td></tr></table></figure>
+<p>通过上面的设置，我们的nginx就可以开机自动启动了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.em248.com/2017/06/13/简单源码安装Nginx/" data-id="cjmls8tfu000f89vq6bp8cjic" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/13/创建自定义maven项目模板/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          创建自定义maven项目模板
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/13/Gemfire使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">gemfire使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-准备环境"><span class="toc-number">1.</span> <span class="toc-text">一.准备环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-编译Nginx"><span class="toc-number">2.</span> <span class="toc-text">二.编译Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步-配置configure"><span class="toc-number">2.1.</span> <span class="toc-text">第一步.配置configure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步-make-amp-make-install"><span class="toc-number">2.2.</span> <span class="toc-text">第二步.make&amp;make install</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-配置开机自动启动-非必需"><span class="toc-number">3.</span> <span class="toc-text">三.配置开机自动启动(非必需)</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 geekyzk&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;geekyzk@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

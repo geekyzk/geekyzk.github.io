@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-9800403554639579",
+        enable_page_level_ads: true
+    });
+  </script>
+  
+  <title>MongoDb使用 | 影子迷鱼博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Mongodb 安装本次安装的Mongodb类型为MongoDB Community Edition on Linux 的ubuntu（16.04）版本，其他版本的安装方式可以参照官网地址 https://docs.mongodb.com/manual/administration/install-on-linux/ 。  在实际中，我们可以根据需要，安装Mongodb不同的package包，以下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDb使用">
+<meta property="og:url" content="http://blog.em248.com/2017/06/13/Mongodb基本操作/index.html">
+<meta property="og:site_name" content="影子迷鱼博客">
+<meta property="og:description" content="Mongodb 安装本次安装的Mongodb类型为MongoDB Community Edition on Linux 的ubuntu（16.04）版本，其他版本的安装方式可以参照官网地址 https://docs.mongodb.com/manual/administration/install-on-linux/ 。  在实际中，我们可以根据需要，安装Mongodb不同的package包，以下">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-28T09:05:34.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDb使用">
+<meta name="twitter:description" content="Mongodb 安装本次安装的Mongodb类型为MongoDB Community Edition on Linux 的ubuntu（16.04）版本，其他版本的安装方式可以参照官网地址 https://docs.mongodb.com/manual/administration/install-on-linux/ 。  在实际中，我们可以根据需要，安装Mongodb不同的package包，以下">
+  
+    <link rel="alternate" href="/atom.xml" title="影子迷鱼博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.em248.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">影子迷鱼博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Mongodb基本操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/13/Mongodb基本操作/" class="article-date">
+  <time datetime="2017-06-13T20:46:25.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MongoDb使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Mongodb-安装"><a href="#Mongodb-安装" class="headerlink" title="Mongodb 安装"></a>Mongodb 安装</h2><p>本次安装的Mongodb类型为MongoDB Community Edition on Linux 的ubuntu（16.04）版本，其他版本的安装方式可以参照官网地址 <a href="https://docs.mongodb.com/manual/administration/install-on-linux/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/administration/install-on-linux/</a> 。</p>
+<ol>
+<li>在实际中，我们可以根据需要，安装Mongodb不同的package包，以下是官方提供的几种package包：<ul>
+<li>mongodb-org</li>
+<li>mongodb-org-server</li>
+<li>mongodb-org-mongos</li>
+<li>mongodb-org-shell</li>
+<li>mongodb-org-tools<a id="more"></a></li>
+</ul>
+</li>
+<li><p>安装的过程和官网介绍的是一样的，就是以下几个步骤</p>
+<ul>
+<li><p>导入公钥 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建list文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装mongodb</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y mongodb-org</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>自此，Mongodb已经成功的安装在ubuntu 16.04上。</p>
+</li>
+</ol>
+<h2 id="Mongodb的启动和运行"><a href="#Mongodb的启动和运行" class="headerlink" title="Mongodb的启动和运行"></a>Mongodb的启动和运行</h2><h2 id="Mongodb基本操作"><a href="#Mongodb基本操作" class="headerlink" title="Mongodb基本操作"></a>Mongodb基本操作</h2><p>下面记录一些mongodb的基本命令，mongodb服务没有开启用户认证，在真实的生产环境中开启认证后，有部分命令是需要有相关权限才能使用。</p>
+<h3 id="1-显示所有数据库信息"><a href="#1-显示所有数据库信息" class="headerlink" title="1. 显示所有数据库信息"></a>1. 显示所有数据库信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> show dbs</span><br><span class="line">admin  0.000GB</span><br><span class="line">local  0.000GB</span><br></pre></td></tr></table></figure>
+<h3 id="2-创建和选择数据库"><a href="#2-创建和选择数据库" class="headerlink" title="2. 创建和选择数据库"></a>2. 创建和选择数据库</h3><p>   在mongodb中，创建和选择数据库都是相同的命令 use databasename</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> use testdb</span><br><span class="line">switched to db testdb</span><br></pre></td></tr></table></figure>
+<p>   当 testdb数据库不存在时，会自动创建testdb数据库，但是，如果在新建的数据库中不存储信息，在后续若使用<code>show dbs</code> 命令时，新建的数据库是不会显示的</p>
+<h3 id="3-删除数据库"><a href="#3-删除数据库" class="headerlink" title="3. 删除数据库"></a>3. 删除数据库</h3><p>   首先，切换到需要删除的数据库，随后执行删除数据库操作</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> use testdb</span><br><span class="line">switched to db testdb</span><br><span class="line"><span class="meta">&gt;</span> db.dropDatabase()</span><br><span class="line">&#123; "dropped" : "testdb", "ok" : 1 &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-插入文档"><a href="#4-插入文档" class="headerlink" title="4. 插入文档"></a>4. 插入文档</h3><p>   mongodb插入文档的格式为<code>db.COLLECTION_NAME.insert(document)</code></p>
+<p>   其中COLLECTION_NAME为插入的集合名，document为插入的数据</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.insert(&#123;name:'tian'&#125;)</span><br><span class="line">WriteResult(&#123; "nInserted" : 1 &#125;)</span><br><span class="line"><span class="meta">&gt;</span> show tables</span><br><span class="line">testcol</span><br><span class="line"><span class="meta">&gt;</span> db.testcol.insert(&#123;name:'tian',age:12&#125;)</span><br><span class="line">WriteResult(&#123; "nInserted" : 1 &#125;)</span><br><span class="line"><span class="meta">&gt;</span> db.testcol.find()</span><br><span class="line">&#123; "_id" : ObjectId("58cb9f6219907121a6e70b22"), "name" : "tian" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("58cba03c19907121a6e70b23"), "name" : "tian", "age" : 12 &#125;</span><br></pre></td></tr></table></figure>
+<p>   在上面的示例中，就可以看到mongodb非常灵活，我们可以根据业务的需要，添加字段，而不必如关系行数据中一样，一开始就限制了表的格式，修改比较繁琐</p>
+<h3 id="5-查看文档"><a href="#5-查看文档" class="headerlink" title="5. 查看文档"></a>5. 查看文档</h3><p>   可以使用<code>db.COLLECTION_NAME.find()</code>查看当前集合中的所有文档信息</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.find()</span><br><span class="line">&#123; "_id" : ObjectId("58cb9f6219907121a6e70b22"), "name" : "tian" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("58cba03c19907121a6e70b23"), "name" : "tian", "age" : 12 &#125;</span><br></pre></td></tr></table></figure>
+<p>   可以加多<code>.pretty()</code>，来格式化输出信息</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.find().pretty()</span><br><span class="line">&#123; "_id" : ObjectId("58cb9f6219907121a6e70b22"), "name" : "tian" &#125;</span><br><span class="line">&#123;</span><br><span class="line">        "_id" : ObjectId("58cba03c19907121a6e70b23"),</span><br><span class="line">        "name" : "tian",</span><br><span class="line">        "age" : 12</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   使用<code>findOne()</code>来获取一条信息，默认返回最早的一条记录</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.findOne()</span><br><span class="line">&#123; "_id" : ObjectId("58cb9f6219907121a6e70b22"), "name" : "tian" &#125;</span><br></pre></td></tr></table></figure>
+<p>   查询参数详解：</p>
+<table>
+<thead>
+<tr>
+<th>等于</th>
+<th><code>{&lt;key&gt;:&lt;value&gt;</code>}</th>
+<th><code>db.col.find({&quot;title&quot;:&quot;tian&quot;}).pretty()</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>小于</td>
+<td><code>{&lt;key&gt;:{$lt:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({&quot;likes&quot;:{$lt:50}}).pretty()</code></td>
+</tr>
+<tr>
+<td>小于或等于</td>
+<td><code>{&lt;key&gt;:{$lte:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({&quot;likes&quot;:{$lte:50}}).pretty()</code></td>
+</tr>
+<tr>
+<td>大于</td>
+<td><code>{&lt;key&gt;:{$gt:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({&quot;likes&quot;:{$gt:50}}).pretty()</code></td>
+</tr>
+<tr>
+<td>大于或等于</td>
+<td><code>{&lt;key&gt;:{$gte:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({&quot;likes&quot;:{$gte:50}}).pretty()</code></td>
+</tr>
+<tr>
+<td>不等于</td>
+<td><code>{&lt;key&gt;:{$ne:&lt;value&gt;}}</code></td>
+<td><code>db.col.find({&quot;likes&quot;:{$ne:50}}).pretty()</code></td>
+</tr>
+</tbody>
+</table>
+<p>使用例子如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.find(&#123;'age':&#123;$gt:18&#125;&#125;)</span><br><span class="line">&#123; "_id" : ObjectId("58cba1f519907121a6e70b25"), "name" : "chen", "age" : 19 &#125;</span><br></pre></td></tr></table></figure>
+<p>可以传入多个值判断，即实现and效果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.find(&#123;'age':&#123;$gt:18&#125;,'name':'chen'&#125;)</span><br><span class="line">&#123; "_id" : ObjectId("58cba1f519907121a6e70b25"), "name" : "chen", "age" : 19 &#125;</span><br></pre></td></tr></table></figure>
+<p>可以使用$or 来实现or效果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.find(&#123;$or:[&#123;'name':'tian'&#125;,&#123;'age':15&#125;]&#125;)</span><br><span class="line">&#123; "_id" : ObjectId("58cb9f6219907121a6e70b22"), "name" : "tian" &#125;</span><br><span class="line">&#123; "_id" : ObjectId("58cba03c19907121a6e70b23"), "name" : "tian", "age" : 12 &#125;</span><br><span class="line">&#123; "_id" : ObjectId("58cba1e619907121a6e70b24"), "name" : "liu", "age" : 15 &#125;</span><br></pre></td></tr></table></figure>
+<p>实现and和or一起的效果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.find(&#123;$or:[&#123;'name':'tian'&#125;,&#123;'age':19&#125;],title:'mongodb'&#125;)</span><br><span class="line">&#123; "_id" : ObjectId("58cba9b919907121a6e70b26"), "name" : "chen", "age" : 19, "title" : "mongodb" &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-更新文档"><a href="#6-更新文档" class="headerlink" title="6. 更新文档"></a>6. 更新文档</h3><p>Mongodb 可以使用update()和save()方法来更新存在数据库中的数据，一般的格式为:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.collection.update(</span><br><span class="line">   &lt;query&gt;,</span><br><span class="line">   &lt;update&gt;,</span><br><span class="line">   &#123;</span><br><span class="line">     upsert: &lt;boolean&gt;,</span><br><span class="line">     multi: &lt;boolean&gt;,</span><br><span class="line">     writeConcern: &lt;document&gt;</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong></p>
+<ul>
+<li><p><strong>query </strong>: update的查询条件，类似sql update查询内where后面的。</p>
+</li>
+<li><p><strong>update </strong>: update的对象和一些更新的操作符（如$,$inc…）等，也可以理解为sql update查询内set后面的</p>
+</li>
+<li><p><strong>upsert </strong>: 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。</p>
+</li>
+<li><p><strong>multi </strong>: 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。</p>
+</li>
+<li><p><strong>writeConcern </strong>:可选，抛出异常的级别。</p>
+</li>
+</ul>
+<p>下面举一些例子</p>
+<ol>
+<li><p>更新一条记录(更新查找到的第一条记录)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.update(&#123;'name':'liu'&#125;,&#123;$set:&#123;'age':22&#125;&#125;)</span><br><span class="line">WriteResult(&#123; "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果查询的属性返回值是多条记录，而且需要都修改，则可以将multi设为true</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> db.testcol.update(&#123;'name':'tian'&#125;,&#123;$set:&#123;'age':23&#125;&#125;,&#123;multi:true&#125;)</span><br><span class="line">WriteResult(&#123; "nMatched" : 2, "nUpserted" : 0, "nModified" : 2 &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>##Mongodb 权限设置</p>
+<p>MongoDb有下面几种权限</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read</td>
+<td>允许用户读取指定数据库</td>
+</tr>
+<tr>
+<td>readWrite</td>
+<td>允许用户读写指定数据库</td>
+</tr>
+<tr>
+<td>dbAdmin</td>
+<td>允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile</td>
+</tr>
+<tr>
+<td>userAdmin</td>
+<td>允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户</td>
+</tr>
+<tr>
+<td>clusterAdmin</td>
+<td>只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。</td>
+</tr>
+<tr>
+<td>readAnyDatabase</td>
+<td>只在admin数据库中可用，赋予用户所有数据库的读权限</td>
+</tr>
+<tr>
+<td>readWriteAnyDatabase</td>
+<td>只在admin数据库中可用，赋予用户所有数据库的读写权限</td>
+</tr>
+<tr>
+<td>userAdminAnyDatabase</td>
+<td>只在admin数据库中可用，赋予用户所有数据库的userAdmin权限</td>
+</tr>
+<tr>
+<td>dbAdminAnyDatabase</td>
+<td>只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。</td>
+</tr>
+<tr>
+<td>root</td>
+<td>只在admin数据库中可用。超级账号，超级权限</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p>根据上述权限表，只有拥有创建用户的权限，才能新创建用户。</p>
+<p><strong>注意:</strong>为指定数据库创建用户时，必须先切换到对应的数据库，再创建用户！！！！</p>
+<p>例如下面的例子，首先，切换到test数据库，随后，再test数据库中创建数据库的用户admin，下面的例子只是一个实例，权限是可以一次赋予一个或多个的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use test</span><br><span class="line">db.createUser(  </span><br><span class="line">  &#123;  </span><br><span class="line">    user: "admin",  </span><br><span class="line">    pwd: "admin",  </span><br><span class="line">    roles: [ &#123; role: "readWrite", db: "admin" &#125;,&#123; role: "dbAdmin" ,db: "admin" &#125; ] </span><br><span class="line">  &#125;  </span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.em248.com/2017/06/13/Mongodb基本操作/" data-id="cjmls8tgq000h89vqrtfmrhl6" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/13/Gemfire使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          gemfire使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/13/Consul组件介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Consul介绍与使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mongodb-安装"><span class="toc-number">1.</span> <span class="toc-text">Mongodb 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mongodb的启动和运行"><span class="toc-number">2.</span> <span class="toc-text">Mongodb的启动和运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mongodb基本操作"><span class="toc-number">3.</span> <span class="toc-text">Mongodb基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-显示所有数据库信息"><span class="toc-number">3.1.</span> <span class="toc-text">1. 显示所有数据库信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建和选择数据库"><span class="toc-number">3.2.</span> <span class="toc-text">2. 创建和选择数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-删除数据库"><span class="toc-number">3.3.</span> <span class="toc-text">3. 删除数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-插入文档"><span class="toc-number">3.4.</span> <span class="toc-text">4. 插入文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-查看文档"><span class="toc-number">3.5.</span> <span class="toc-text">5. 查看文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-更新文档"><span class="toc-number">3.6.</span> <span class="toc-text">6. 更新文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建用户"><span class="toc-number">3.7.</span> <span class="toc-text">创建用户</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 geekyzk&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;geekyzk@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

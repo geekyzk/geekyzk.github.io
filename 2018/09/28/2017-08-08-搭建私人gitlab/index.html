@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-9800403554639579",
+        enable_page_level_ads: true
+    });
+  </script>
+  
+  <title>搭建私人gitlab | 影子迷鱼博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="GitLab是一个利用Ruby on Rails开发的开源应用程序，实现一个自托管的[Git]项目仓库，可通过Web界面进行访问公开的或者私人项目。 ​上面是引用了wikipedia对GitLab的介绍，感觉比较通俗易懂。GitLab分为商业版还有社区版本，我们个人搭建或者一般的公司都是使用社区版本来搭建一个私人的git管理平台，方便在公司内部管理项目代码。 ​文章只是对GitLab进行了一个基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建私人gitlab">
+<meta property="og:url" content="http://blog.em248.com/2018/09/28/2017-08-08-搭建私人gitlab/index.html">
+<meta property="og:site_name" content="影子迷鱼博客">
+<meta property="og:description" content="GitLab是一个利用Ruby on Rails开发的开源应用程序，实现一个自托管的[Git]项目仓库，可通过Web界面进行访问公开的或者私人项目。 ​上面是引用了wikipedia对GitLab的介绍，感觉比较通俗易懂。GitLab分为商业版还有社区版本，我们个人搭建或者一般的公司都是使用社区版本来搭建一个私人的git管理平台，方便在公司内部管理项目代码。 ​文章只是对GitLab进行了一个基础">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-28T09:05:34.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建私人gitlab">
+<meta name="twitter:description" content="GitLab是一个利用Ruby on Rails开发的开源应用程序，实现一个自托管的[Git]项目仓库，可通过Web界面进行访问公开的或者私人项目。 ​上面是引用了wikipedia对GitLab的介绍，感觉比较通俗易懂。GitLab分为商业版还有社区版本，我们个人搭建或者一般的公司都是使用社区版本来搭建一个私人的git管理平台，方便在公司内部管理项目代码。 ​文章只是对GitLab进行了一个基础">
+  
+    <link rel="alternate" href="/atom.xml" title="影子迷鱼博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.em248.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">影子迷鱼博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2017-08-08-搭建私人gitlab" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/28/2017-08-08-搭建私人gitlab/" class="article-date">
+  <time datetime="2018-09-28T09:05:34.097Z" itemprop="datePublished">2018-09-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      搭建私人gitlab
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>GitLab是一个利用<code>Ruby on Rails</code>开发的开源应用程序，实现一个自托管的[Git]项目仓库，可通过Web界面进行访问公开的或者私人项目。</p>
+<p>​上面是引用了wikipedia对GitLab的介绍，感觉比较通俗易懂。GitLab分为商业版还有社区版本，我们个人搭建或者一般的公司都是使用社区版本来搭建一个私人的git管理平台，方便在公司内部管理项目代码。</p>
+<h2 id="​文章只是对GitLab进行了一个基础的安装，当然GitLab可配置的东西还是非常多的。"><a href="#​文章只是对GitLab进行了一个基础的安装，当然GitLab可配置的东西还是非常多的。" class="headerlink" title="​文章只是对GitLab进行了一个基础的安装，当然GitLab可配置的东西还是非常多的。"></a>​文章只是对GitLab进行了一个基础的安装，当然GitLab可配置的东西还是非常多的。</h2><h2 id="准备条件"><a href="#准备条件" class="headerlink" title="准备条件"></a>准备条件</h2><ul>
+<li>Ubuntu 16.04 系统主机一台</li>
+<li>良好的网络条件</li>
+</ul>
+<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><p>本次是在Ubuntu上安装GitLab社区版本，当然，如果是其他操作系统，可以参考一下官方网站<br>[GitLab官方安装教程]: <a href="https://about.gitlab.com/installation/" target="_blank" rel="noopener">https://about.gitlab.com/installation/</a>    “GitLab官方安装教程”</p>
+<a id="more"></a>
+<h3 id="第一步：安装依赖的软件"><a href="#第一步：安装依赖的软件" class="headerlink" title="第一步：安装依赖的软件"></a>第一步：安装依赖的软件</h3><p>首先，我们需要安装<code>curl openssh-server ca-certificates</code>这三个依赖软件，当然，有些电脑其实默认已经安装有了，但是为了预防万一，我们还是再执行一遍相关的安装命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y curl openssh-server ca-certificates</span><br></pre></td></tr></table></figure>
+<p>随后，我们需要安装GitLab用于发送邮件的依赖软件<strong>Postfix</strong>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y postfix</span><br></pre></td></tr></table></figure>
+<p>在弹出的配置页面中选择Internet Site，随后一直默认回车即可安装完成</p>
+<h3 id="第二步-添加GitLab源与安装"><a href="#第二步-添加GitLab源与安装" class="headerlink" title="第二步: 添加GitLab源与安装"></a>第二步: 添加GitLab源与安装</h3><p>根据官方文档，我们需要添加GitLab源。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash</span><br></pre></td></tr></table></figure>
+<p>随后，开始安装GitLab。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gitlab-ce</span><br></pre></td></tr></table></figure>
+<p>最后，运行配置命令，配置与启动GitLab。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+<p>到此，GitLab已经成功安装完毕，GitLab的默认管理员用户名为root，当安装成功后，默认web程序会监听在80端口，我们第一次访问web页面，就会提示我们更改root账号的密码，当设置完毕后，一个简单的GitLab安装也就完成。</p>
+<blockquote>
+<p>sudo gitlab-ctl reconfigure 这条命令在我们每次修改完配置文件后，都需要运行一遍，让配置文件生效</p>
+</blockquote>
+<h2 id="GitLab配置"><a href="#GitLab配置" class="headerlink" title="GitLab配置"></a>GitLab配置</h2><p>GitLab会安装许多的默认配套的软件，这也会有一个问题，例如系统已经有监听在80端口的web程序了，当我们启动GitLab时，就会造成冲突，因此我们必须修改GitLab的配置文件来修改默认端口.</p>
+<p>GitLab由以下服务构成：</p>
+<ul>
+<li><code>nginx</code>：静态Web服务器</li>
+<li><code>gitlab-shell</code>：用于处理Git命令和修改authorized keys列表</li>
+<li><code>gitlab-workhorse</code>:轻量级的反向代理服务器</li>
+<li><code>logrotate</code>：日志文件管理工具</li>
+<li><code>postgresql</code>：数据库</li>
+<li><code>redis</code>：redis缓存数据库</li>
+<li><code>sidekiq</code>：用于在后台执行队列任务（异步执行）</li>
+<li><code>unicorn</code>：An HTTP server for Rack applications，GitLab Rails应用是托管在这个服务器上面的。</li>
+</ul>
+<p>以上的组件，有一部分是可以替换成自己已使用的组件。</p>
+<h3 id="配置一：修改gitlab地址和端口"><a href="#配置一：修改gitlab地址和端口" class="headerlink" title="配置一：修改gitlab地址和端口"></a>配置一：修改gitlab地址和端口</h3><blockquote>
+<p>external_url ‘<a href="http://192.168.4.208&#39;" target="_blank" rel="noopener">http://192.168.4.208&#39;</a></p>
+</blockquote>
+<p>在配置文件中有<strong>external_url</strong> 这一项，这就是配置gitlab的地址，当我们需要改变端口时，可以加上端口配置如:</p>
+<p><code>external_url &#39;http://192.168.4.208:90&#39;</code> (亲测是👌的)</p>
+<p>当然，这里也可以配置成域名的形式</p>
+<blockquote>
+<p>注意，作者刚开始也想绑定8080端口，但是8080端口已经被gitlab的其他服务(unicorn)使用，因此绑定是不成功的，除非修改其他服务的默认端口。</p>
+<p>要善于查看日志。日志中会包含有错误信息和原因，这样会方便我们查找并解决</p>
+</blockquote>
+<h3 id="配置二-配置发送邮件邮箱"><a href="#配置二-配置发送邮件邮箱" class="headerlink" title="配置二: 配置发送邮件邮箱"></a>配置二: 配置发送邮件邮箱</h3><p>首先，配置发送的邮箱必须开启了smtp功能，gitlab配置具体如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">### Email Settings</span><br><span class="line">gitlab_rails[&apos;gitlab_email_enabled&apos;] = true</span><br><span class="line"># 发送邮件的邮箱地址</span><br><span class="line">gitlab_rails[&apos;gitlab_email_from&apos;] = &apos;example@163.com&apos;</span><br><span class="line"># 发送邮件的标题</span><br><span class="line">gitlab_rails[&apos;gitlab_email_display_name&apos;] = &apos;example_lab&apos;</span><br><span class="line">gitlab_rails[&apos;gitlab_email_reply_to&apos;] = &apos;example@163.com&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">###! **Use smtp instead of sendmail/postfix.**</span><br><span class="line">gitlab_rails[&apos;smtp_enable&apos;] = true</span><br><span class="line">gitlab_rails[&apos;smtp_address&apos;] = &quot;smtp.163.com&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_port&apos;] = 25</span><br><span class="line">gitlab_rails[&apos;smtp_user_name&apos;] = &quot;example@163.com&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_password&apos;] = &quot;password&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_domain&apos;] = &quot;163.com&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_authentication&apos;] = &quot;login&quot;</span><br><span class="line">gitlab_rails[&apos;smtp_enable_starttls_auto&apos;] = true</span><br></pre></td></tr></table></figure>
+<p>必须配置这两部分的信息，随后运行<code>sudo gitlab-ctl reconfigure</code>命令来使配置生效即可，当邀请别人到项目等动作时，就会自动发送邮件到被邀请人邮箱中。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.em248.com/2018/09/28/2017-08-08-搭建私人gitlab/" data-id="cjmls8tem000489vqg9p09wqk" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2018/09/28/2017-01-12-注册jar到maven仓库/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          注册jar到maven仓库
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/28/2016-12-15-Centos7源码编译hadoop/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Centos7 源码编译 hadoop</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#​文章只是对GitLab进行了一个基础的安装，当然GitLab可配置的东西还是非常多的。"><span class="toc-number">1.</span> <span class="toc-text">​文章只是对GitLab进行了一个基础的安装，当然GitLab可配置的东西还是非常多的。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备条件"><span class="toc-number">2.</span> <span class="toc-text">准备条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装过程"><span class="toc-number">3.</span> <span class="toc-text">安装过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步：安装依赖的软件"><span class="toc-number">3.1.</span> <span class="toc-text">第一步：安装依赖的软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步-添加GitLab源与安装"><span class="toc-number">3.2.</span> <span class="toc-text">第二步: 添加GitLab源与安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitLab配置"><span class="toc-number">4.</span> <span class="toc-text">GitLab配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置一：修改gitlab地址和端口"><span class="toc-number">4.1.</span> <span class="toc-text">配置一：修改gitlab地址和端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置二-配置发送邮件邮箱"><span class="toc-number">4.2.</span> <span class="toc-text">配置二: 配置发送邮件邮箱</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 geekyzk&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;geekyzk@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-9800403554639579",
+        enable_page_level_ads: true
+    });
+  </script>
+  
+  <title>Centos7 安装mysql5.7 | 影子迷鱼博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MySQL是一种基于GNU（通用公共许可证）发布的开源免费关系数据库管理系统（RDBMS）。它用于通过为每个创建的数据库提供多用户访问，在任何单个服务器上运行多个数据库。 一.添加官方yum源首先，下载官方Centos7的yum源: wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm   随后，安装官方y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7 安装mysql5.7">
+<meta property="og:url" content="http://blog.em248.com/2017/06/13/Centos7 安装mysql5.7/index.html">
+<meta property="og:site_name" content="影子迷鱼博客">
+<meta property="og:description" content="MySQL是一种基于GNU（通用公共许可证）发布的开源免费关系数据库管理系统（RDBMS）。它用于通过为每个创建的数据库提供多用户访问，在任何单个服务器上运行多个数据库。 一.添加官方yum源首先，下载官方Centos7的yum源: wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm   随后，安装官方y">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-28T09:05:34.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Centos7 安装mysql5.7">
+<meta name="twitter:description" content="MySQL是一种基于GNU（通用公共许可证）发布的开源免费关系数据库管理系统（RDBMS）。它用于通过为每个创建的数据库提供多用户访问，在任何单个服务器上运行多个数据库。 一.添加官方yum源首先，下载官方Centos7的yum源: wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm   随后，安装官方y">
+  
+    <link rel="alternate" href="/atom.xml" title="影子迷鱼博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.em248.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">影子迷鱼博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Centos7 安装mysql5.7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/13/Centos7 安装mysql5.7/" class="article-date">
+  <time datetime="2017-06-13T20:46:25.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Centos7 安装mysql5.7
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><strong>MySQL</strong>是一种基于GNU（通用公共许可证）发布的开源免费关系数据库管理系统（RDBMS）。它用于通过为每个创建的数据库提供多用户访问，在任何单个服务器上运行多个数据库。</p>
+<h2 id="一-添加官方yum源"><a href="#一-添加官方yum源" class="headerlink" title="一.添加官方yum源"></a>一.添加官方yum源</h2><p>首先，下载官方Centos7的yum源:</p>
+<p><code>wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm</code>  </p>
+<p>随后，安装官方yum源:</p>
+<p><code>yum localinstall mysql57-community-release-el7-7.noarch.rpm</code></p>
+<p>最后，更新yum:</p>
+<p><code>yum update -y</code><br><a id="more"></a><br>检查yum库，是否已经存在最新的mysql:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum repolist | grep "mysql*"</span><br><span class="line">mysql-connectors-community/x86_64       MySQL Connectors Community           36</span><br><span class="line">mysql-tools-community/x86_64            MySQL Tools Community                47</span><br><span class="line">mysql57-community/x86_64                MySQL 5.7 Community Server          187</span><br></pre></td></tr></table></figure>
+<p>如上所示，则成功添加了官方的yum源</p>
+<h2 id="二-安装mysql"><a href="#二-安装mysql" class="headerlink" title="二.安装mysql"></a>二.安装mysql</h2><p>通过上面的步骤，我们已经成功的添加和更新了yum源，现在我们则可以安装mysql。</p>
+<p><code>yum install mysql-community-server</code></p>
+<p>通过上面的命令，将会安装mysql-community-server，mysql-community-client，mysql-community-common和mysql-community-libs所需的所有软件包。</p>
+<h2 id="三-启动mysql"><a href="#三-启动mysql" class="headerlink" title="三.启动mysql"></a>三.启动mysql</h2><p>现在，我们可以通过<strong><code>service mysqld start</code></strong>命令来启动mysql。随后，使用<strong><code>service mysqld status</code></strong>来检验mysql的状态，如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# service mysqld status</span><br><span class="line">Redirecting to /bin/systemctl status  mysqld.service</span><br><span class="line">● mysqld.service - MySQL Server</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Sun 2017-05-14 17:41:31 CST; 52min ago</span><br><span class="line">     Docs: man:mysqld(8)</span><br><span class="line">           http://dev.mysql.com/doc/refman/en/using-systemd.html</span><br><span class="line">  Process: 2607 ExecStart=/usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid $MYSQLD_OPTS (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 1215 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 2610 (mysqld)</span><br><span class="line">   CGroup: /system.slice/mysqld.service</span><br><span class="line">           └─2610 /usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid</span><br><span class="line"></span><br><span class="line">May 14 17:41:28 localhost.localdomain systemd[1]: Starting MySQL Server...</span><br><span class="line">May 14 17:41:31 localhost.localdomain systemd[1]: Started MySQL Server.</span><br></pre></td></tr></table></figure>
+<p>当启动成功后，我们可以在<code>/var/log/mysqld.log</code>里面查看系统生成的随机密码(mysql5.7或更高版本以上才有),如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# grep 'temporary password' /var/log/mysqld.log</span><br><span class="line">2017-05-14T08:48:02.531831Z 1 [Note] A temporary password is generated for root@localhost: prkOkfWX=9Ty</span><br></pre></td></tr></table></figure>
+<p>如果不确定安装版本，我们也可以使用<strong><code>mysql --version</code></strong>来查看安装的版本，如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mysql --version</span><br><span class="line">mysql  Ver 14.14 Distrib 5.7.18, for Linux (x86_64) using  EditLine wrapper</span><br></pre></td></tr></table></figure>
+<h2 id="四-设置mysql"><a href="#四-设置mysql" class="headerlink" title="四.设置mysql"></a>四.设置mysql</h2><p>通过上面三个步骤，我们就已经成功安装好了mysql并运行了起来,现在，就可以设置一些mysql的属性</p>
+<blockquote>
+<p>注意：一定要记住mysql生成的随机密码，方便后面登陆后修改，这个密码只是临时的</p>
+</blockquote>
+<p>现在，可以运行mysql_secure_installation来设置一些基本的属性,如下</p>
+<p><code>[root@localhost ~]# mysql_secure_installation</code></p>
+<p>可以根据提示来设置一些mysql的基本设置，如是否运行远程登陆，是否删除test数据库.</p>
+<blockquote>
+<p>注意:在重设密码使，设置的密码应包含大小写字母数字和特殊字符，不然不给通过。</p>
+</blockquote>
+<h2 id="五-连接mysql"><a href="#五-连接mysql" class="headerlink" title="五.连接mysql"></a>五.连接mysql</h2><p>通过上面步骤四，我们就已经设置好基本的配置，当然，也可以使用临时密码来直接跳过第四步，从第五步开始，成功连接上mysql后通过sql语句来配置mysql，这些具体的不在这里讨论，以下展示如何连接上安装好的mysql.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mysql -uroot -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 5</span><br><span class="line">Server version: 5.7.18 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如上所示，我们已经成功连接上mysql，即mysql的安装和配置也已经完成了，至于更详细的配置和优化，就不在这里讨论了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.em248.com/2017/06/13/Centos7 安装mysql5.7/" data-id="cjmls8teq000589vq6wqcyo8u" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/13/ServiceBroker学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          ServiceBroker 学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/13/Centos安装open-jdk/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Centos安装OpenJDK</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-添加官方yum源"><span class="toc-number">1.</span> <span class="toc-text">一.添加官方yum源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-安装mysql"><span class="toc-number">2.</span> <span class="toc-text">二.安装mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-启动mysql"><span class="toc-number">3.</span> <span class="toc-text">三.启动mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-设置mysql"><span class="toc-number">4.</span> <span class="toc-text">四.设置mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-连接mysql"><span class="toc-number">5.</span> <span class="toc-text">五.连接mysql</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 geekyzk&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;geekyzk@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

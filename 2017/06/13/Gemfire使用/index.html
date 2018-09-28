@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-9800403554639579",
+        enable_page_level_ads: true
+    });
+  </script>
+  
+  <title>gemfire使用 | 影子迷鱼博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="5.5.1 使用外部配置文件配置region一般引入cache.xml. &amp;lt;gfe:cache cache-xml-location=&amp;quot;cache.xml&amp;quot;/&amp;gt; &amp;lt;gfe:lookup-region id=&amp;quot;region-bean&amp;quot; name=&amp;quot;Orders&amp;quot;/&amp;gt; 即会自动扫描到cache.xml中的Order r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gemfire使用">
+<meta property="og:url" content="http://blog.em248.com/2017/06/13/Gemfire使用/index.html">
+<meta property="og:site_name" content="影子迷鱼博客">
+<meta property="og:description" content="5.5.1 使用外部配置文件配置region一般引入cache.xml. &amp;lt;gfe:cache cache-xml-location=&amp;quot;cache.xml&amp;quot;/&amp;gt; &amp;lt;gfe:lookup-region id=&amp;quot;region-bean&amp;quot; name=&amp;quot;Orders&amp;quot;/&amp;gt; 即会自动扫描到cache.xml中的Order r">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-28T09:05:34.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gemfire使用">
+<meta name="twitter:description" content="5.5.1 使用外部配置文件配置region一般引入cache.xml. &amp;lt;gfe:cache cache-xml-location=&amp;quot;cache.xml&amp;quot;/&amp;gt; &amp;lt;gfe:lookup-region id=&amp;quot;region-bean&amp;quot; name=&amp;quot;Orders&amp;quot;/&amp;gt; 即会自动扫描到cache.xml中的Order r">
+  
+    <link rel="alternate" href="/atom.xml" title="影子迷鱼博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.em248.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">影子迷鱼博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Gemfire使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/13/Gemfire使用/" class="article-date">
+  <time datetime="2017-06-13T20:46:25.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gemfire使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="5-5-1-使用外部配置文件配置region"><a href="#5-5-1-使用外部配置文件配置region" class="headerlink" title="5.5.1 使用外部配置文件配置region"></a>5.5.1 使用外部配置文件配置region</h3><p>一般引入cache.xml.</p>
+<p><code>&lt;gfe:cache cache-xml-location=&quot;cache.xml&quot;/&gt;</code></p>
+<p><code>&lt;gfe:lookup-region id=&quot;region-bean&quot; name=&quot;Orders&quot;/&gt;</code></p>
+<p>即会自动扫描到cache.xml中的Order region，加载进context中。</p>
+<h3 id="5-5-2-自动扫描外部文件region"><a href="#5-5-2-自动扫描外部文件region" class="headerlink" title="5.5.2 自动扫描外部文件region"></a>5.5.2 自动扫描外部文件region</h3><p>当然，也可以使用全自动扫描</p>
+<p><code>&lt;gfe:auto-region-lookup/&gt;</code></p>
+<p>这个标签会把cache.xml中的所有region都注册到spring中</p>
+<p>当要使用时，可以如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package example;</span><br><span class="line"></span><br><span class="line">import ...</span><br><span class="line"></span><br><span class="line">@Repository(&quot;appDao&quot;)</span><br><span class="line">@DependsOn(&quot;gemfireCache&quot;)</span><br><span class="line">public class ApplicationDao extends DaoSupport &#123;</span><br><span class="line"></span><br><span class="line">  @Resource(name = &quot;Parent&quot;)</span><br><span class="line">  private Region&lt;?, ?&gt; parent;</span><br><span class="line"></span><br><span class="line">  @Resource(name = &quot;/Parent/Child&quot;)</span><br><span class="line">  private Region&lt;?, ?&gt; child;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-5-3-regions-配置"><a href="#5-5-3-regions-配置" class="headerlink" title="5.5.3 regions 配置"></a>5.5.3 regions 配置</h3><h3 id="5-5-3-1-Cache-Listeners"><a href="#5-5-3-1-Cache-Listeners" class="headerlink" title="5.5.3.1 Cache Listeners"></a>5.5.3.1 Cache Listeners</h3><p>它会监听配置对应的region事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class MyListener implements CacheListener&lt;Object,Object&gt; &#123;</span><br><span class="line">    public void afterCreate(EntryEvent&lt;Object, Object&gt; entryEvent) &#123;</span><br><span class="line">        System.out.println(entryEvent.getKey() + &quot;:&quot; + entryEvent.getNewValue());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void afterUpdate(EntryEvent&lt;Object, Object&gt; entryEvent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void afterInvalidate(EntryEvent&lt;Object, Object&gt; entryEvent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void afterDestroy(EntryEvent&lt;Object, Object&gt; entryEvent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void afterRegionInvalidate(RegionEvent&lt;Object, Object&gt; regionEvent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void afterRegionDestroy(RegionEvent&lt;Object, Object&gt; regionEvent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void afterRegionClear(RegionEvent&lt;Object, Object&gt; regionEvent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void afterRegionCreate(RegionEvent&lt;Object, Object&gt; regionEvent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void afterRegionLive(RegionEvent&lt;Object, Object&gt; regionEvent) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void close() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">gfs:client-region</span> <span class="attr">id</span>=<span class="string">"test1"</span> <span class="attr">shortcut</span>=<span class="string">"PROXY"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">gfs:cache-listener</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.ttaocloud.listener.MyListener"</span>/&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">gfs:cache-listener</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">gfs:client-region</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-5-3-2-Cache-Loaders-and-Cache-Writers"><a href="#5-5-3-2-Cache-Loaders-and-Cache-Writers" class="headerlink" title="5.5.3.2 Cache Loaders and Cache Writers"></a>5.5.3.2 Cache Loaders and Cache Writers</h3><h3 id="5-5-3-3-Subregions-子region"><a href="#5-5-3-3-Subregions-子region" class="headerlink" title="5.5.3.3 Subregions(子region)"></a>5.5.3.3 Subregions(子region)</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">gfe:replicated-region</span> <span class="attr">name</span>=<span class="string">"Customer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">gfe:replicated-region</span> <span class="attr">name</span>=<span class="string">"Address"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">gfe:replicated-region</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">gfe:replicated-region</span> <span class="attr">name</span>=<span class="string">"Employee"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">gfe:replicated-region</span> <span class="attr">name</span>=<span class="string">"Address"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">gfe:replicated-region</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-5-4-Region-Templates-Region-配置模版"><a href="#5-5-4-Region-Templates-Region-配置模版" class="headerlink" title="5.5.4 Region Templates (Region 配置模版)"></a>5.5.4 Region Templates (Region 配置模版)</h3><table>
+<thead>
+<tr>
+<th>Tag Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;gfe:region-template&gt;</code></td>
+<td>Defines common, generic Region attributes; extends <code>regionType</code> in the SDG 1.5 XSD</td>
+</tr>
+<tr>
+<td><code>&lt;gfe:local-region-template&gt;</code></td>
+<td>Defines common, ‘Local’ Region attributes; extends <code>localRegionType</code> in the SDG 1.5 XSD</td>
+</tr>
+<tr>
+<td><code>&lt;gfe:partitioned-region-template&gt;</code></td>
+<td>Defines common, ‘PARTITION’ Region attributes; extends <code>partitionedRegionType</code> in the SDG 1.5 XSD</td>
+</tr>
+<tr>
+<td><code>&lt;gfe:replicated-region-template&gt;</code></td>
+<td>Defines common, ‘REPLICATE’ Region attributes; extends <code>replicatedRegionType</code> in the SDG 1.5 XSD</td>
+</tr>
+<tr>
+<td><code>&lt;gfe:client-region-template&gt;</code></td>
+<td>Defines common, ‘Client’ Region attributes; extends <code>clientRegionType</code> in the SDG 1.5 XSD</td>
+</tr>
+</tbody>
+</table>
+<p>配置事例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">gfe:async-event-queue</span> <span class="attr">id</span>=<span class="string">"AEQ"</span> <span class="attr">persistent</span>=<span class="string">"false"</span> <span class="attr">parallel</span>=<span class="string">"false"</span> <span class="attr">dispatcher-threads</span>=<span class="string">"4"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:async-event-listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"example.AeqListener"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">gfe:async-event-listener</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gfe:async-event-queue</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">gfe:region-template</span> <span class="attr">id</span>=<span class="string">"BaseRegionTemplate"</span> <span class="attr">cloning-enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">concurrency-checks-enabled</span>=<span class="string">"false"</span> <span class="attr">disk-synchronous</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">ignore-jta</span>=<span class="string">"true"</span> <span class="attr">initial-capacity</span>=<span class="string">"51"</span> <span class="attr">key-constraint</span>=<span class="string">"java.lang.Long"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">load-factor</span>=<span class="string">"0.85"</span> <span class="attr">persistent</span>=<span class="string">"false"</span> <span class="attr">statistics</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">value-constraint</span>=<span class="string">"java.lang.String"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:cache-listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"example.CacheListenerOne"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"example.CacheListenerTwo"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">gfe:cache-listener</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:entry-ttl</span> <span class="attr">timeout</span>=<span class="string">"300"</span> <span class="attr">action</span>=<span class="string">"INVALIDATE"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:entry-tti</span> <span class="attr">timeout</span>=<span class="string">"600"</span> <span class="attr">action</span>=<span class="string">"DESTROY"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gfe:region-template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">gfe:region-template</span> <span class="attr">id</span>=<span class="string">"ExtendedRegionTemplate"</span> <span class="attr">template</span>=<span class="string">"BaseRegionTemplate"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">index-update-type</span>=<span class="string">"asynchronous"</span> <span class="attr">cloning-enabled</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">concurrency-checks-enabled</span>=<span class="string">"true"</span> <span class="attr">key-constraint</span>=<span class="string">"java.lang.Integer"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">load-factor</span>=<span class="string">"0.55"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:cache-loader</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"example.CacheLoader"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">gfe:cache-loader</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:cache-writer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"example.CacheWriter"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">gfe:cache-writer</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:membership-attributes</span> <span class="attr">required-roles</span>=<span class="string">"readWriteNode"</span> <span class="attr">loss-action</span>=<span class="string">"limited-access"</span> <span class="attr">resumption-action</span>=<span class="string">"none"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:async-event-queue-ref</span> <span class="attr">bean</span>=<span class="string">"AEQ"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gfe:region-template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">gfe:partitioned-region-template</span> <span class="attr">id</span>=<span class="string">"PartitionRegionTemplate"</span> <span class="attr">template</span>=<span class="string">"ExtendedRegionTemplate"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">copies</span>=<span class="string">"1"</span> <span class="attr">local-max-memory</span>=<span class="string">"1024"</span> <span class="attr">total-max-memory</span>=<span class="string">"16384"</span> <span class="attr">recovery-delay</span>=<span class="string">"60000"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">startup-recovery-delay</span>=<span class="string">"15000"</span> <span class="attr">enable-async-conflation</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">enable-subscription-conflation</span>=<span class="string">"true"</span> <span class="attr">load-factor</span>=<span class="string">"0.70"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">value-constraint</span>=<span class="string">"java.lang.Object"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:partition-resolver</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"example.PartitionResolver"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">gfe:partition-resolver</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:eviction</span> <span class="attr">type</span>=<span class="string">"ENTRY_COUNT"</span> <span class="attr">threshold</span>=<span class="string">"8192000"</span> <span class="attr">action</span>=<span class="string">"OVERFLOW_TO_DISK"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gfe:partitioned-region-template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">gfe:partitioned-region</span> <span class="attr">id</span>=<span class="string">"TemplateBasedPartitionRegion"</span> <span class="attr">template</span>=<span class="string">"PartitionRegionTemplate"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">copies</span>=<span class="string">"2"</span> <span class="attr">local-max-memory</span>=<span class="string">"8192"</span> <span class="attr">total-buckets</span>=<span class="string">"91"</span> <span class="attr">disk-synchronous</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">enable-async-conflation</span>=<span class="string">"true"</span> <span class="attr">ignore-jta</span>=<span class="string">"false"</span> <span class="attr">key-constraint</span>=<span class="string">"java.util.Date"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">persistent</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:cache-writer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"example.CacheWriter"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">gfe:cache-writer</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:membership-attributes</span> <span class="attr">required-roles</span>=<span class="string">"admin,root"</span> <span class="attr">loss-action</span>=<span class="string">"no-access"</span> <span class="attr">resumption-action</span>=<span class="string">"reinitialize"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:partition-listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"example.PartitionListener"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">gfe:partition-listener</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">gfe:subscription</span> <span class="attr">type</span>=<span class="string">"ALL"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gfe:partitioned-region</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>子模版若有于父模版相同的属性，则会覆盖父模版</p>
+<h3 id="5-5-6-Data-Persistence-数据持久化"><a href="#5-5-6-Data-Persistence-数据持久化" class="headerlink" title="5.5.6 Data Persistence(数据持久化)"></a>5.5.6 Data Persistence(数据持久化)</h3><p>Region 是可以使其数据持久化的，方便后面系统重启或者出现意外时能恢复数据</p>
+<p><code>&lt;gfe:partitioned-region id=&quot;persitent-partition&quot; persistent=&quot;true&quot;/&gt;</code></p>
+<p>只要设置<code>persistent=true</code>就就可以实现</p>
+<p>当然，也是可以使用data-policy，这个必须跟region的type对应。</p>
+<p><code>&lt;gfe:partitioned-region id=&quot;persitent-partition&quot; data-policy=&quot;PERSISTENT_PARTITION&quot;/&gt;</code></p>
+<p>如果当设置了<code>data-policy=&quot;PERSISTENT_PARTITION&quot;</code> 还设置<code>persistent=&quot;false&quot;</code>,就会抛出<code>initialization exception</code></p>
+<p>在使用了数据持久化，最好设置<code>disk-store-ref</code>属性，这样能时其更有效率。</p>
+<p><code>disk-synchronous</code>属性是设置synchronously or asynchronously写入磁盘</p>
+<p><code>&lt;gfe:partitioned-region id=&quot;persitent-partition&quot; persistent=&quot;true&quot; disk-store-ref=&quot;myDiskStore&quot; disk-synchronous=&quot;true&quot;/&gt;</code></p>
+<h3 id="5-5-7-Subscription-Interest-Policy"><a href="#5-5-7-Subscription-Interest-Policy" class="headerlink" title="5.5.7 Subscription Interest Policy"></a>5.5.7 Subscription Interest Policy</h3><h3 id="5-5-8-Data-Eviction-and-Overflowing-数据溢出"><a href="#5-5-8-Data-Eviction-and-Overflowing-数据溢出" class="headerlink" title="5.5.8 Data Eviction and Overflowing(数据溢出)"></a>5.5.8 Data Eviction and Overflowing(数据溢出)</h3><p>Spring Data Gemfire 支持多种数据溢出处理策略，包括一下几种：</p>
+<ul>
+<li>Entry count(实体总数)</li>
+<li>memory (内存大小)</li>
+<li>heap usage</li>
+</ul>
+<p>如下，当内存超过512mb时，就会触发写入硬盘的操作，建议同时配上<code>disk-store</code>属性。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">gfe:partitioned-region</span> <span class="attr">id</span>=<span class="string">"overflow-partition"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">gfe:eviction</span> <span class="attr">type</span>=<span class="string">"MEMORY_SIZE"</span> <span class="attr">threshold</span>=<span class="string">"512"</span> <span class="attr">action</span>=<span class="string">"OVERFLOW_TO_DISK"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gfe:partitioned-region</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-5-9-Data-Expiration-数据有效时间"><a href="#5-5-9-Data-Expiration-数据有效时间" class="headerlink" title="5.5.9 Data Expiration 数据有效时间"></a>5.5.9 Data Expiration 数据有效时间</h3><p>GemFire 允许设置数据在缓存中的有效时间，支持一下两种</p>
+<ul>
+<li><p><strong>Time-to-Live (TTL)</strong> </p>
+<p>The amount of time, in seconds, the object may remain in the cache after the last creation or update. For entries, the counter is set to zero for create and put operations. Region counters are reset when the Region is created and when an entry has its counter reset.</p>
+</li>
+<li><p><strong>Idle Timeout (TTI)</strong> </p>
+<p>The amount of time, in seconds, the object may remain in the cache after the last access. The Idle Timeout counter for an object is reset any time its TTL counter is reset. In addition, an entry’s Idle Timeout counter is reset any time the entry is accessed through a get operation or a netSearch . The Idle Timeout counter for a Region is reset whenever the Idle Timeout is reset for one of its entries.</p>
+</li>
+</ul>
+<p>Each of these may be applied to the Region itself or entries in the Region. Spring Data GemFire provides <code>&lt;region-ttl&gt;</code>, <code>&lt;region-tti&gt;</code>, <code>&lt;entry-ttl&gt;</code> and <code>&lt;entry-tti&gt;</code>Region child elements to specify timeout values and expiration actions.</p>
+<h3 id="5-5-10-Annotation-based-Data-Expiration-基于注解设置有效时间（未完成）"><a href="#5-5-10-Annotation-based-Data-Expiration-基于注解设置有效时间（未完成）" class="headerlink" title="5.5.10 Annotation-based Data Expiration 基于注解设置有效时间（未完成）"></a>5.5.10 Annotation-based Data Expiration 基于注解设置有效时间（未完成）</h3><p>在Spring Data Gemfire1.7后支持</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Expiration</span>(timeout = <span class="string">"1800"</span>, action = <span class="string">"INVALIDATE"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SessionBasedApplicationDomainObject</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TimeToLiveExpiration</span>(timeout = <span class="string">"3600"</span>, action = <span class="string">"LOCAL_DESTROY"</span>)</span><br><span class="line"><span class="meta">@IdleTimeoutExpiration</span>(timeout = <span class="string">"1800"</span>, action = <span class="string">"LOCAL_INVALIDATE"</span>)</span><br><span class="line"><span class="meta">@Expiration</span>(timeout = <span class="string">"1800"</span>, action = <span class="string">"INVALIDATE"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AnotherSessionBasedApplicationDomainObject</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@IdleTimeoutExpiration</code> and <code>@TimeToLiveExpiration</code>会优先于<code>@Expiration</code></p>
+<p> Spring Data GemFire do allow you to set Region Expiration using the SDG XML namespace, like so…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;gfe:*-region id=&quot;Example&quot; persistent=&quot;false&quot;&gt;</span><br><span class="line">  &lt;gfe:region-ttl timeout=&quot;600&quot; action=&quot;DESTROY&quot;/&gt;</span><br><span class="line">  &lt;gfe:region-tti timeout=&quot;300&quot; action=&quot;INVALIDATE&quot;/&gt;</span><br><span class="line">&lt;/gfe:*-region&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="5-5-11-Local-Region（未完成）"><a href="#5-5-11-Local-Region（未完成）" class="headerlink" title="5.5.11 Local Region（未完成）"></a>5.5.11 Local Region（未完成）</h3><h3 id="5-5-12-Replicated-Region-未完成"><a href="#5-5-12-Replicated-Region-未完成" class="headerlink" title="5.5.12 Replicated Region(未完成)"></a>5.5.12 Replicated Region(未完成)</h3><h3 id="5-5-13-Partitioned-Region-未完成"><a href="#5-5-13-Partitioned-Region-未完成" class="headerlink" title="5.5.13 Partitioned Region(未完成)"></a>5.5.13 Partitioned Region(未完成)</h3><h3 id="5-5-14-Client-Region-未完成"><a href="#5-5-14-Client-Region-未完成" class="headerlink" title="5.5.14 Client Region(未完成)"></a>5.5.14 Client Region(未完成)</h3><h3 id="5-5-14-1-Client-Interests-未完成"><a href="#5-5-14-1-Client-Interests-未完成" class="headerlink" title="5.5.14.1 Client Interests(未完成)"></a>5.5.14.1 Client Interests(未完成)</h3><h2 id="5-6-Creating-an-Index-创建索引"><a href="#5-6-Creating-an-Index-创建索引" class="headerlink" title="5.6  Creating an Index 创建索引"></a>5.6  Creating an Index 创建索引</h2><h2 id="5-7-Configuring-a-Disk-Store-配置磁盘存储"><a href="#5-7-Configuring-a-Disk-Store-配置磁盘存储" class="headerlink" title="5.7 Configuring a Disk Store 配置磁盘存储"></a>5.7 Configuring a Disk Store 配置磁盘存储</h2><p>Example:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">gfe:disk-store</span> <span class="attr">id</span>=<span class="string">"diskStore1"</span> <span class="attr">queue-size</span>=<span class="string">"50"</span> <span class="attr">auto-compact</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">max-oplog-size</span>=<span class="string">"10"</span> <span class="attr">time-interval</span>=<span class="string">"9999"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">gfe:disk-dir</span> <span class="attr">location</span>=<span class="string">"/gemfire/store1/"</span> <span class="attr">max-size</span>=<span class="string">"20"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">gfe:disk-dir</span> <span class="attr">location</span>=<span class="string">"/gemfire/store2/"</span> <span class="attr">max-size</span>=<span class="string">"20"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gfe:disk-store</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-8-Using-the-GemFire-Snapshot-Service"><a href="#5-8-Using-the-GemFire-Snapshot-Service" class="headerlink" title="5.8 Using the GemFire Snapshot Service"></a>5.8 Using the GemFire Snapshot Service</h2><h2 id="5-9-Configuring-GemFire’s-Function-Service"><a href="#5-9-Configuring-GemFire’s-Function-Service" class="headerlink" title="5.9 Configuring GemFire’s Function Service"></a>5.9 Configuring GemFire’s Function Service</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.em248.com/2017/06/13/Gemfire使用/" data-id="cjmls8tgn000g89vq68f2biga" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/13/简单源码安装Nginx/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          简单源码安装Nginx
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/13/Mongodb基本操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">MongoDb使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-1-使用外部配置文件配置region"><span class="toc-number">1.</span> <span class="toc-text">5.5.1 使用外部配置文件配置region</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-2-自动扫描外部文件region"><span class="toc-number">2.</span> <span class="toc-text">5.5.2 自动扫描外部文件region</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-3-regions-配置"><span class="toc-number">3.</span> <span class="toc-text">5.5.3 regions 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-3-1-Cache-Listeners"><span class="toc-number">4.</span> <span class="toc-text">5.5.3.1 Cache Listeners</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-3-2-Cache-Loaders-and-Cache-Writers"><span class="toc-number">5.</span> <span class="toc-text">5.5.3.2 Cache Loaders and Cache Writers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-3-3-Subregions-子region"><span class="toc-number">6.</span> <span class="toc-text">5.5.3.3 Subregions(子region)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-4-Region-Templates-Region-配置模版"><span class="toc-number">7.</span> <span class="toc-text">5.5.4 Region Templates (Region 配置模版)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-6-Data-Persistence-数据持久化"><span class="toc-number">8.</span> <span class="toc-text">5.5.6 Data Persistence(数据持久化)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-7-Subscription-Interest-Policy"><span class="toc-number">9.</span> <span class="toc-text">5.5.7 Subscription Interest Policy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-8-Data-Eviction-and-Overflowing-数据溢出"><span class="toc-number">10.</span> <span class="toc-text">5.5.8 Data Eviction and Overflowing(数据溢出)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-9-Data-Expiration-数据有效时间"><span class="toc-number">11.</span> <span class="toc-text">5.5.9 Data Expiration 数据有效时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-10-Annotation-based-Data-Expiration-基于注解设置有效时间（未完成）"><span class="toc-number">12.</span> <span class="toc-text">5.5.10 Annotation-based Data Expiration 基于注解设置有效时间（未完成）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-11-Local-Region（未完成）"><span class="toc-number">13.</span> <span class="toc-text">5.5.11 Local Region（未完成）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-12-Replicated-Region-未完成"><span class="toc-number">14.</span> <span class="toc-text">5.5.12 Replicated Region(未完成)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-13-Partitioned-Region-未完成"><span class="toc-number">15.</span> <span class="toc-text">5.5.13 Partitioned Region(未完成)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-14-Client-Region-未完成"><span class="toc-number">16.</span> <span class="toc-text">5.5.14 Client Region(未完成)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-14-1-Client-Interests-未完成"><span class="toc-number">17.</span> <span class="toc-text">5.5.14.1 Client Interests(未完成)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-Creating-an-Index-创建索引"><span class="toc-number"></span> <span class="toc-text">5.6  Creating an Index 创建索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-7-Configuring-a-Disk-Store-配置磁盘存储"><span class="toc-number"></span> <span class="toc-text">5.7 Configuring a Disk Store 配置磁盘存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-8-Using-the-GemFire-Snapshot-Service"><span class="toc-number"></span> <span class="toc-text">5.8 Using the GemFire Snapshot Service</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-9-Configuring-GemFire’s-Function-Service"><span class="toc-number"></span> <span class="toc-text">5.9 Configuring GemFire’s Function Service</span></a>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 geekyzk&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;geekyzk@163.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
